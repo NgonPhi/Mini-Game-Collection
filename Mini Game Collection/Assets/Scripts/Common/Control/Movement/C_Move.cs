@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class C_Move : Physics2DObject
 {
-    public float speed = 5f;
-    public Enums.KeyGroups typeOfControl = Enums.KeyGroups.ArrowKeys;
+    [SerializeField]
+    private float speed = 5f;
+    [SerializeField]
+    private Enums.KeyGroups typeOfControl = Enums.KeyGroups.ArrowKeys;
 
     private Vector2 movement;
     private float moveHoz;

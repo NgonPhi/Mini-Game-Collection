@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class DinoGame : MonoBehaviour
 {
-    [HideInInspector]
     public static DinoGame instance = null;
 
     [Header("Start Game")]
-    public int score = 0;
+    [SerializeField]
+    private int score = 0;
+    [SerializeField]
+    private float speed = 3f;
+    [SerializeField]
+    private float maxSpeed = 6f;
 
-    public float speed = 3f;
-    public GameObject pawnPoint = null;
-    public GameObject tree = null;
-    public Vector2 timePawn = new Vector2(0.5f, 1.5f);
+    public int Score { get { return score; } }
+    public float Speed { get { return speed; } }
+
+    [Header("Pawn Tree")]
+    [SerializeField]
+    private GameObject pawnPoint = null;
+    [SerializeField]
+    private GameObject tree = null;
+    [SerializeField]
+    private Vector2 timePawn = new Vector2(0.5f, 1.5f);
 
     private Vector3 startPos;
 
@@ -31,7 +41,7 @@ public class DinoGame : MonoBehaviour
 
     private void Update()
     {
-        MovePawnPoint();        
+        MovePawnPoint();
     }
 
     private void MovePawnPoint()
@@ -41,7 +51,7 @@ public class DinoGame : MonoBehaviour
         pawnPoint.transform.position = pos;
     }
 
-    IEnumerator PawnTree()
+    private IEnumerator PawnTree()
     {
         GameObject newTree = Instantiate(tree, startPos, Quaternion.identity);
         newTree.transform.parent = pawnPoint.transform;
@@ -53,6 +63,7 @@ public class DinoGame : MonoBehaviour
     {
         score += amount;
         if (score % 10 == 0 && score != 0) speed += 0.5f;
+        if (speed >= maxSpeed) speed = maxSpeed;
     }
 
     public void GameOver()

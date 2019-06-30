@@ -5,16 +5,20 @@ using UnityEngine;
 
 public class DinoGameUI : MonoBehaviour
 {
-    [HideInInspector]
     public static DinoGameUI instance = null;
 
-    public Text txtScore = null;
-    public Text txtSpeed = null;
+    [SerializeField]
+    private Text txtScore = null;
+    [SerializeField]
+    private Text txtSpeed = null;
 
     [Header("Game Over")]
-    public GameObject panel = null;
-    public Text txtScoreGO = null;
-    public Text txtTitle = null;
+    [SerializeField]
+    private GameObject panel = null;
+    [SerializeField]
+    private Text txtScoreGO = null;
+    [SerializeField]
+    private Text txtTitle = null;
 
     private void Awake()
     {
@@ -24,14 +28,14 @@ public class DinoGameUI : MonoBehaviour
 
     private void Update()
     {
-        txtScore.text = DinoGame.instance.score.ToString();
-        txtSpeed.text = DinoGame.instance.speed.ToString();
+        txtScore.text = DinoGame.instance.Score.ToString();
+        txtSpeed.text = DinoGame.instance.Speed.ToString();
     }
 
     public void GameOver()
     {
         txtTitle.text = "Game Over !!!";
-        txtScoreGO.text = DinoGame.instance.score.ToString();
+        txtScoreGO.text = DinoGame.instance.Score.ToString();
         panel.SetActive(true);
     }
 

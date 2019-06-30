@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class LanderGame : MonoBehaviour
 {
-    [HideInInspector]
     public static LanderGame instance = null;
 
     [Header("Start Game")]
-    public int health = 5;
-    public int score = 0;
+    [SerializeField]
+    private int health = 5;
+    [SerializeField]
+    private int maxHealth = 10;
+    [SerializeField]
+    private int score = 0;
 
-    public GameObject SpaceShip = null;
-    public Transform startPoint = null;
+    public int Health { get { return health; } }
+    public int Score { get { return score; } }
+
+    [SerializeField]
+    private GameObject SpaceShip = null;
+    [SerializeField]
+    private Transform startPoint = null;
 
     private void Awake()
     {
@@ -29,9 +37,14 @@ public class LanderGame : MonoBehaviour
     {
         if (health == 0)
         {
-            LanderGameUI.instance.GameOver();
-            Time.timeScale = 0.0f;
+            GameOver();
         }
+    }
+
+    private void GameOver()
+    {
+        LanderGameUI.instance.GameOver();
+        Time.timeScale = 0.0f;
     }
 
     public void IncreaseScore(int amount)
@@ -42,7 +55,7 @@ public class LanderGame : MonoBehaviour
     public void IncreaseHealth(int amount)
     {
         health += amount;
-        if (health <= 0) health = 0;
+        health = Mathf.Clamp(health, 0, maxHealth);
     }
 
     public void ReStart()

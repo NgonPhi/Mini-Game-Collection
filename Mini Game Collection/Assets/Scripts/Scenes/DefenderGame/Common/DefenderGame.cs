@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class DefenderGame : MonoBehaviour
 {
-    [HideInInspector]
     public static DefenderGame instance = null;
 
     [Header("Start Game")]
-    public int health = 5;
-    public int score = 0;
+    [SerializeField]
+    private int health = 5;    
+    [SerializeField]
+    private int maxHealth = 10;
+    [SerializeField]
+    private int score = 0;
+
+    public int Health { get { return health; } }
+    public int Score { get { return score; } }
 
     [Header("Pawn Planet")]
-    public Transform posPawn = null;
-    public GameObject[] planets = null;
-    public float timePawn = 1f;
+    [SerializeField]
+    private Transform posPawn = null;
+    [SerializeField]
+    private GameObject[] planets = null;
+    [SerializeField]
+    private float timePawn = 1f;
 
     private void Awake()
     {
@@ -31,12 +40,17 @@ public class DefenderGame : MonoBehaviour
     {
         if(health == 0)
         {
-            DefenderGameUI.instance.GameOver();
-            Time.timeScale = 0.0f;
+            GameOver();
         }
     }
 
-    IEnumerator PawnPlanet()
+    private void GameOver()
+    {
+        DefenderGameUI.instance.GameOver();
+        Time.timeScale = 0.0f;
+    }
+
+    private IEnumerator PawnPlanet()
     {
         int randomIndex = Random.Range(0, planets.Length);
         GameObject newObj = Instantiate(planets[randomIndex]);
@@ -56,6 +70,6 @@ public class DefenderGame : MonoBehaviour
     public void IncreaseHealth(int amount)
     {
         health += amount;
-        if (health <= 0) health = 0;
+        health = Mathf.Clamp(health, 0, maxHealth);
     }
 }

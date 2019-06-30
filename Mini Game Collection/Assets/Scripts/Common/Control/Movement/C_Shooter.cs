@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class C_Shooter : MonoBehaviour
 {
-    public KeyCode keyPress = KeyCode.Space;
-    public GameObject bullet = null;
-    public float shootSpeed = 10f;
-    public float creationRate = 0.5f;
+    [SerializeField]
+    private KeyCode keyPress = KeyCode.Space;
+    [SerializeField]
+    private GameObject bullet = null;
+    [SerializeField]
+    private float shootSpeed = 10f;
+    [SerializeField]
+    private float creationRate = 0.5f;
 
     private float timeOfLastSpawn;
 

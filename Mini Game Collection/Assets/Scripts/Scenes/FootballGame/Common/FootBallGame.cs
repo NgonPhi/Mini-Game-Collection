@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class FootBallGame : MonoBehaviour
 {
-    [HideInInspector]
     public static FootBallGame instance = null;
 
-    public GameObject Player1 = null;
-    public GameObject Player2 = null;
-    public GameObject Ball = null;
+    [SerializeField]
+    private GameObject player1 = null;
+    [SerializeField]
+    private GameObject player2 = null;
+    [SerializeField]
+    private GameObject ball = null;
+
+    public GameObject Player1 { get { return player1; } }
+    public GameObject Player2 { get { return player2; } }
 
     [Header("Start Game")]
-    public int timeStart = 3;
+    [SerializeField]
+    private int timeStart = 3;
 
     [Header("Win Game")]
-    public ParticleSystem confetti = null;    
-    public int timeResume = 3;
+    [SerializeField]
+    private ParticleSystem confetti = null;
+    [SerializeField]
+    private int timeResume = 3;
 
     private Vector3 posStartPlayer1 = new Vector3();
     private Vector3 posStartPlayer2 = new Vector3();
@@ -30,25 +38,24 @@ public class FootBallGame : MonoBehaviour
 
     private void Start()
     {
-        posStartPlayer1 = Player1.transform.position;
-        posStartPlayer2 = Player2.transform.position;
-        posStartBall = Ball.transform.position;
+        posStartPlayer1 = player1.transform.position;
+        posStartPlayer2 = player2.transform.position;
+        posStartBall = ball.transform.position;
 
         StartCoroutine(FootBallGameUI.instance.StartGame(timeStart));
         StartCoroutine(RePosStart());
-    }    
+    }
 
     public void WinGame(string player)
     {
-        //Debug.Log(player + " Win !!!");
         if (player.Equals("Player1"))
         {
-            Player1.GetComponent<M_Player>().IncreaseScore(1);
+            player1.GetComponent<M_Player>().IncreaseScore(1);
             StartCoroutine(FootBallGameUI.instance.WinGame("Player 1", timeResume));
         }
-        else if(player.Equals("Player2"))
+        else if (player.Equals("Player2"))
         {
-            Player2.GetComponent<M_Player>().IncreaseScore(1);
+            player2.GetComponent<M_Player>().IncreaseScore(1);
             StartCoroutine(FootBallGameUI.instance.WinGame("Player 2", timeResume));
         }
 
@@ -56,20 +63,20 @@ public class FootBallGame : MonoBehaviour
         StartCoroutine(RePosStart());
     }
 
-    IEnumerator RePosStart()
+    private IEnumerator RePosStart()
     {
-        Player1.GetComponent<C_Move>().rigidbody2D.bodyType = RigidbodyType2D.Static;
-        Player2.GetComponent<C_Move>().rigidbody2D.bodyType = RigidbodyType2D.Static;
-        Ball.GetComponent<C_Ball>().rigidbody2D.bodyType = RigidbodyType2D.Static;
+        player1.GetComponent<C_Move>().rigidbody2D.bodyType = RigidbodyType2D.Static;
+        player2.GetComponent<C_Move>().rigidbody2D.bodyType = RigidbodyType2D.Static;
+        ball.GetComponent<C_Ball>().rigidbody2D.bodyType = RigidbodyType2D.Static;
 
         yield return new WaitForSeconds(timeResume);
 
-        Ball.transform.position = posStartBall;
-        Player1.transform.position = posStartPlayer1;
-        Player2.transform.position = posStartPlayer2;
-        Ball.GetComponent<C_Ball>().rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
-        Player1.GetComponent<C_Move>().rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
-        Player2.GetComponent<C_Move>().rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        ball.transform.position = posStartBall;
+        player1.transform.position = posStartPlayer1;
+        player2.transform.position = posStartPlayer2;
+        ball.GetComponent<C_Ball>().rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        player1.GetComponent<C_Move>().rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        player2.GetComponent<C_Move>().rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
     }
 
 }

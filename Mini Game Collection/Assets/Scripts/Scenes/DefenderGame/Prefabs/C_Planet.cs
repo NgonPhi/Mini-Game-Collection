@@ -18,8 +18,7 @@ public class C_Planet : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
-            //Debug.Log(other.tag);
-            DefenderGame.instance.IncreaseScore(planet.score);
+            DefenderGame.instance.IncreaseScore(planet.Score);
             Instantiate(ef, transform.position, Quaternion.identity);
         }
     }
@@ -29,8 +28,7 @@ public class C_Planet : MonoBehaviour
         if (other.collider.CompareTag("Ground"))
         {
             Destroy(gameObject);
-            //Debug.Log(other.collider.tag);
-            DefenderGame.instance.IncreaseHealth(-planet.power);
+            DefenderGame.instance.IncreaseHealth(-planet.Power);
             Instantiate(ef, transform.position, Quaternion.identity);
         }
     }

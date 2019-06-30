@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class C_SpaceShip : MonoBehaviour
 {
-    public GameObject ef = null;
+    [SerializeField]
+    private GameObject ef = null;
 
     private void OnCollisionEnter2D(Collision2D other)
     {

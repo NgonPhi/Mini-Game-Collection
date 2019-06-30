@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class C_Jump : DynPhy2DObject
 {
-    public KeyCode keyPress = KeyCode.Space;
-    public float jumpStrength = 10f;
-    public string groundTag = "Ground";
-    public string trigger = "isJump";
+    [SerializeField]
+    private KeyCode keyPress = KeyCode.Space;
+    [SerializeField]
+    private float jumpStrength = 10f;
+    [SerializeField]
+    private string groundTag = "Ground";
+    [SerializeField]
+    private string trigger = "isJump";
 
     private bool canJump = true;
 

@@ -5,15 +5,18 @@ using UnityEngine;
 
 public class DefenderGameUI : MonoBehaviour
 {
-    [HideInInspector]
     public static DefenderGameUI instance = null;
 
-    public Text txtScore = null;
-    public Text txtHealth = null;
-
+    [SerializeField]
+    private Text txtScore = null;
+    [SerializeField]
+    private Text txtHealth = null;
+    
     [Header("Game Over")]
-    public GameObject panel = null;
-    public Text txtScoreGO = null;
+    [SerializeField]
+    private GameObject panel = null;
+    [SerializeField]
+    private Text txtScoreGO = null;
 
     private void Awake()
     {
@@ -23,14 +26,14 @@ public class DefenderGameUI : MonoBehaviour
 
     private void Update()
     {
-        txtScore.text = DefenderGame.instance.score.ToString();
-        txtHealth.text = DefenderGame.instance.health.ToString();
+        txtScore.text = DefenderGame.instance.Score.ToString();
+        txtHealth.text = DefenderGame.instance.Health.ToString();
     }
 
     public void GameOver()
     {
-        txtScoreGO.text = DefenderGame.instance.score.ToString();
+        txtScoreGO.text = DefenderGame.instance.Score.ToString();
         panel.SetActive(true);
-    }    
+    }
 
 }

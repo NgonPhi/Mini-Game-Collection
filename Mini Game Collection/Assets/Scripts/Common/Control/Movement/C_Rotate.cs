@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class C_Rotate : Physics2DObject
 {
-    public float speed = 5f;
-    public Enums.KeyGroups typeOfControl = Enums.KeyGroups.ArrowKeys;
+    [SerializeField]
+    private float speed = 5f;
+    [SerializeField]
+    private Enums.KeyGroups typeOfControl = Enums.KeyGroups.ArrowKeys;
 
     private float spin;
 

@@ -4504,9 +4504,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fbc78d33bab17a44aad6bf223540ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player1: {fileID: 909442353}
-  Player2: {fileID: 1123916029}
-  Ball: {fileID: 1150003463}
+  player1: {fileID: 909442353}
+  player2: {fileID: 1123916029}
+  ball: {fileID: 1150003463}
   timeStart: 3
   confetti: {fileID: 1566907619}
   timeResume: 3

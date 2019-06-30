@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class C_TimeLife : MonoBehaviour
 {
-    public float timeLife = 3f;
+    [SerializeField]
+    private float timeLife = 3f;
     private void Start()
     {
         StartCoroutine(DestroyByTime(timeLife));

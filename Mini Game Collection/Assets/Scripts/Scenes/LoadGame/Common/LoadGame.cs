@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class LoadGame : MonoBehaviour
 {
-    [HideInInspector]
     public static LoadGame instance = null;
 
     [Header("Load Game")]
-    public float timeLoad = 5.0f;
+    [SerializeField]
+    private float timeLoad = 5.0f;
 
     private float timer;
 

@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class LoadGameUI : MonoBehaviour
 {
-    [HideInInspector]
     public static LoadGameUI instance = null;
 
     [Header("Load Game")]
-    public RectTransform canvas = null;
-    public Image imgLoad = null;
-    public GameObject rollingBall = null;
+    [SerializeField]
+    private RectTransform canvas = null;
+    [SerializeField]
+    private Image imgLoad = null;
+    [SerializeField]
+    private GameObject rollingBall = null;
 
     private float maxX;
     private float sumValue = 0.0f;

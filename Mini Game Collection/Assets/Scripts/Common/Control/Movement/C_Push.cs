@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class C_Push : Physics2DObject
 {
-    public KeyCode keyPress = KeyCode.Space;
-    public float pushStrength = 5f;
+    [SerializeField]
+    private KeyCode keyPress = KeyCode.Space;
+    [SerializeField]
+    private float pushStrength = 5f;
 
     private void Update()
     {

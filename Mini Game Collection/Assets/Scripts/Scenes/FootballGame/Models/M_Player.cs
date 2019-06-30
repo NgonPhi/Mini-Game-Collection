@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class M_Player: MonoBehaviour
 {
+    [SerializeField]
     private int score = 0;
-    public int Score { get { return score; } set { score = value; } }
+    public int Score { get { return score; } }
 
     public void IncreaseScore(int amount)
     {        
-        Score += amount;
+        score += amount;
     }
 }

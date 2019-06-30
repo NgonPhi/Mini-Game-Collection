@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class C_AutoRotate : Physics2DObject
 {
-    public float rotationSpeed = 5;
+    [SerializeField]
+    private float rotationSpeed = 5;
 
     private float currentRotation;
 

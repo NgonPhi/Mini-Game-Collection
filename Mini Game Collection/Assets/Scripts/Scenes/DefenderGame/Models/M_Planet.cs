@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class M_Planet : MonoBehaviour
 {
-    public int score = 1;
-    public int power = 1;
+    [SerializeField]
+    private int score = 1;
+    [SerializeField]
+    private int power = 1;
+
+    public int Score { get { return score; } }
+    public int Power { get { return power; } }
 }
